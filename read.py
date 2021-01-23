@@ -21,7 +21,7 @@ def teacherList():
     teachers = {}
     lastRow = sheet.max_row
     for i in sheet["A2":"D"+str(lastRow)]:
-        teachers[i[0].value] = {"TeacherNumber": i[0].value, "Name": i[2].value+" "+i[1].value, "Class": i[3].value}
+        teachers[i[0].value] = {"TeacherNumber": i[0].value, "Name": i[2].value+" "+i[1].value, "Class": i[3].value, "givenRisk": 0}
         #print(teachers[i[0].value])
     return teachers
 
@@ -32,7 +32,7 @@ def TAList():
     j=0
     lastRow = sheet.max_row
     for i in sheet["A2":"F"+str(lastRow)]:
-        tas[j] = {"Name": i[1].value+" "+i[0].value, "Period1": i[2].value, "Period2": i[3].value, "Period3": i[4].value, "Period4": i[5].value}
+        tas[j] = {"Name": i[1].value+" "+i[0].value, "Period1": i[2].value, "Period2": i[3].value, "Period3": i[4].value, "Period4": i[5].value, "givenRisk": 0}
         #print(tas[j])
         j+=1
     return tas
@@ -42,6 +42,11 @@ def studentList():
     studentRecord = {}
     for i in sheet["A2":"J581"]:
         studentRecord[i[0].value] = {"StudentID": i[0].value, "Name": i[2].value+" "+i[1].value, "Grade": i[3].value, "ClassP1": i[4].value, "ClassP2": i[5].value, "ClassP3": i[6].value, "ClassP4": i[7].value, "healthFlag": 0 if(i[8].value == "N/A") else 1, "ECs": i[9].value.split(',')[0], "givenRisk": 0}
+    
+    sheet = wb2['ZBY1 Status']
+    lastRow = sheet.max_row
+    for i in sheet["A2":"D"+str(lastRow)]:
+        studentRecord[]
     return studentRecord
 
 def putStudentsInClass():
@@ -79,4 +84,4 @@ def putStudentsInClass():
     AllClasses['ClassP4'] = classesP4
     return AllClasses 
 
-print(putStudentsInClass())
+print(studentList())
