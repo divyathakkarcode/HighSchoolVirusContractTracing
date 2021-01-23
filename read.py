@@ -41,7 +41,7 @@ def studentList():
     sheet = wb2['Student Records']
     studentRecord = {}
     for i in sheet["A2":"J581"]:
-        studentRecord[i[0].value] = {"StudentID": i[0].value, "Name": i[2].value+" "+i[1].value, "Grade": i[3].value, "ClassP1": i[4].value, "ClassP2": i[5].value, "ClassP3": i[6].value, "ClassP4": i[7].value, "healthFlag": 0 if(i[8].value == "N/A") else 1, "ECs": i[9].value.split(',')[0]}
+        studentRecord[i[0].value] = {"StudentID": i[0].value, "Name": i[2].value+" "+i[1].value, "Grade": i[3].value, "ClassP1": i[4].value, "ClassP2": i[5].value, "ClassP3": i[6].value, "ClassP4": i[7].value, "healthFlag": 0 if(i[8].value == "N/A") else 1, "ECs": i[9].value.split(',')[0], "givenRisk": 0}
     return studentRecord
 
 def putStudentsInClass():

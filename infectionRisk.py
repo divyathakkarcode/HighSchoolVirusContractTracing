@@ -1,21 +1,24 @@
+classList = [0.5, 0.4, 0.2, 0, 0, 0.1]
+classList = {"Id": 10, }
+
 # Calculating Percent of Risk Going Forward
 # I think This needs to be recalculated at each stage 
-def calculateInfectionRisk(checkedStudent, classList):
+def calculateInfectionRisk(studentRecord, studentID, classList):
     
     filteredInfectedList = [chance for chance in classList if chance > 0]
 
     for student in filteredInfectedList:
-        checkedStudent[givenRisk] += student[givenRisk]*(3.0/len(classList))
+        studentRecord[studentID]["givenRisk"] += studentRecord[studentID]["givenRisk"]*(3.0/len(classList))
 
-    if(checkedStudent[healthFlag] == 1):
-        checkedStudent[givenRisk] *= 1.7
+    if(studentRecord[studentID]["healthFlag"] == 1):
+        studentRecord[studentID]["givenRisk"] *= 1.7
         
-    if(checkedStudent[grade] == 12):
-        checkedStudent[givenRisk] *= 1.75
-    elif(checkedStudent[grade] == 11):
-        checkedStudent[givenRisk] *= 1.5
-    elif(checkedStudent[grade] == 10):
-        checkedStudent[givenRisk] *= 1.25
+    if(studentRecord[studentID]["grade"] == 12):
+        studentRecord[studentID]["givenRisk"] *= 1.75
+    elif(studentRecord[studentID]["grade"] == 11):
+        studentRecord[studentID]["givenRisk"] *= 1.5
+    elif(studentRecord[studentID]["grade"] == 10):
+        studentRecord[studentID]["givenRisk"] *= 1.25
     # given Risk for the student has been updated and does not need to be updated
 
 
