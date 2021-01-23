@@ -46,4 +46,40 @@ def studentList():
         #print(studentRecord[i[0].value]["Name"])
     return studentRecord
 
-print(studentList())
+
+def putStudentsInClass():
+    classesP1 = dict()
+    classesP2 = dict()
+    classesP3 = dict()
+    classesP4 = dict()
+
+    studentLst = studentList()
+    for key,value in studentLst.items():
+        if value['ClassP1'] in classesP1:
+            classesP1[value['ClassP1']].append(key)
+        else:
+            classesP1[value['ClassP1']] = [key]
+
+        if value['ClassP2'] in classesP2:
+            classesP2[value['ClassP2']].append(key)
+        else:
+            classesP2[value['ClassP2']] = [key]
+
+        if value['ClassP3'] in classesP3:
+            classesP3[value['ClassP3']].append(key)
+        else:
+            classesP3[value['ClassP3']] = [key]
+
+        if value['ClassP4'] in classesP4:
+            classesP4[value['ClassP4']].append(key)
+        else:
+            classesP4[value['ClassP4']] = [key]
+
+    AllClasses = dict()
+    AllClasses['ClassP1'] = classesP1
+    AllClasses['ClassP2'] = classesP2
+    AllClasses['ClassP3'] = classesP3
+    AllClasses['ClassP4'] = classesP4
+    return AllClasses 
+
+#print(putStudentsInClass())
