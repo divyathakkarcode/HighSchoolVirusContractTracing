@@ -40,12 +40,9 @@ def TAList():
 def studentList():
     sheet = wb2['Student Records']
     studentRecord = {}
-    lastRow = sheet.max_row
     for i in sheet["A2":"J581"]:
-        studentRecord[i[0].value] = {"StudentID": i[0].value, "Name": i[2].value+" "+i[1].value, "Grade": i[3].value, "ClassP1": i[4].value, "ClassP2": i[5].value, "ClassP3": i[6].value, "ClassP4": i[7].value, "healthFlag": i[8].value, "ECs": i[9].value}
-        #print(studentRecord[i[0].value]["Name"])
+        studentRecord[i[0].value] = {"StudentID": i[0].value, "Name": i[2].value+" "+i[1].value, "Grade": i[3].value, "ClassP1": i[4].value, "ClassP2": i[5].value, "ClassP3": i[6].value, "ClassP4": i[7].value, "healthFlag": 0 if(i[8].value == "N/A") else 1, "ECs": i[9].value}
     return studentRecord
-
 
 def putStudentsInClass():
     classesP1 = dict()
@@ -82,4 +79,4 @@ def putStudentsInClass():
     AllClasses['ClassP4'] = classesP4
     return AllClasses 
 
-#print(putStudentsInClass())
+print(putStudentsInClass())
