@@ -1,4 +1,5 @@
-### reference: https://www.bogotobogo.com/python/python_graph_data_structures.php 
+# Referenced used to help create object class for a directed graph structure
+### reference: https://www.bogotobogo.com/python/python_graph_data_structures.php
 
 class Node:
     def __init__(self,_id):
