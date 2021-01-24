@@ -5,10 +5,10 @@ import read
 def calculateInfectionRisk(studentRecord, studentID, classList, teacherID, TA_ID):
 #def calculateInfectionRisk(studentRecord, studentID, classList):
     filteredInfectedList = []
-    
+
     for ID in classList:
-        if(studentRecord[studentID]["givenRisk"] != 0):
-            filteredInfectedList.append(studentRecord[studentID]["givenRisk"])
+        if(studentRecord[ID]["givenRisk"] > 0.0):
+            filteredInfectedList.append(studentRecord[ID]["givenRisk"])
     
     # The class size is the total number of students + 1 teacher + 1 TA
     classSize = len(classList) + 2
@@ -36,5 +36,4 @@ def calculateInfectionRisk(studentRecord, studentID, classList, teacherID, TA_ID
     return(studentRecord[studentID]["givenRisk"])
 
 # SAMPLE DATA FOR TESTING
-print(calculateInfectionRisk(read.studentRecord, 1, [1, 86, 131, 531], 1, 1))
-print("Hello")
+print(calculateInfectionRisk(read.studentRecord, 1, [1, 86, 131, 531], 1, 4))
