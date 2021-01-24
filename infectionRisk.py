@@ -1,5 +1,6 @@
 # Import the dictionary of students, teachers and TAs that we imported from excel in the read.py file
 import read
+import math
 
 # This method is used to calculate the risk that one student has due to his contact with a given class, teacher and TA
 # This function will be called for each student at each stage that they risk transfer of infection (switching from P1/P2 or P3/P4 or being in class with other infected people)
@@ -38,11 +39,11 @@ def calculateInfectionRisk(studentRecord, studentID, classList, teacherID, TA_ID
     
     # Increase risk factors accordingly if the student has a higher age
     if(studentRecord[studentID]["Grade"] == 12):
-        studentRecord[studentID]["givenRisk"] *= 1.75
+        studentRecord[studentID]["givenRisk"] *= math.sqrt(1.75)
     elif(studentRecord[studentID]["Grade"] == 11):
-        studentRecord[studentID]["givenRisk"] *= 1.5
+        studentRecord[studentID]["givenRisk"] *= math.sqrt(1.5)
     elif(studentRecord[studentID]["Grade"] == 10):
-        studentRecord[studentID]["givenRisk"] *= 1.25
+        studentRecord[studentID]["givenRisk"] *= math.sqrt(1.25)
     
     # If the student already has a 100% of infection or greater, cap the value off at 100%
     if(studentRecord[studentID]["givenRisk"]) >= 1:
