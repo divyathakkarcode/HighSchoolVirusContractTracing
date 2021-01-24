@@ -43,4 +43,9 @@ def calculateInfectionRisk(studentRecord, studentID, classList, teacherID, TA_ID
         studentRecord[studentID]["givenRisk"] *= 1.5
     elif(studentRecord[studentID]["Grade"] == 10):
         studentRecord[studentID]["givenRisk"] *= 1.25
+    
+    # If the student already has a 100% of infection or greater, cap the value off at 100%
+    if(studentRecord[studentID]["givenRisk"]) >= 1:
+        studentRecord[studentID]["givenRisk"] = 1
+
     return(studentRecord)
