@@ -1,13 +1,14 @@
+# Import the dictionary of students, teachers and TAs that we imported from excel in the read.py file
 import read
 
-# Calculating Percent of Risk Going Forward
-# I think This needs to be recalculated at each stage 
+# This method is used to calculate the risk that one student has due to his contact with a given class, teacher and TA
+# This function will be called for each 
 def calculateInfectionRisk(studentRecord, studentID, classList, teacherID, TA_ID):
 #def calculateInfectionRisk(studentRecord, studentID, classList):
     filteredInfectedList = []
 
     for ID in classList:
-        if(studentRecord[ID]["givenRisk"] > 0.0):
+        if(studentRecord[ID]["givenRisk"] > 0.0 and ID != studentID):
             filteredInfectedList.append(studentRecord[ID]["givenRisk"])
     
     # The class size is the total number of students + 1 teacher + 1 TA
@@ -33,7 +34,7 @@ def calculateInfectionRisk(studentRecord, studentID, classList, teacherID, TA_ID
         studentRecord[studentID]["givenRisk"] *= 1.5
     elif(studentRecord[studentID]["Grade"] == 10):
         studentRecord[studentID]["givenRisk"] *= 1.25
-    return(studentRecord[studentID]["givenRisk"])
+    return(studentRecord)
 
 # SAMPLE DATA FOR TESTING
-print(calculateInfectionRisk(read.studentRecord, 1, [1, 86, 131, 531], 1, 4))
+print(calculateInfectionRisk(read.studentRecord, 1, [1, 86, 131, 531], 1, 1))
