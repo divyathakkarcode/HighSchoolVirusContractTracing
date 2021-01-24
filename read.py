@@ -34,7 +34,7 @@ def teacherList():
     global teachers
     lastRow = sheet.max_row
     for i in sheet["A2":"D"+str(lastRow)]:
-        teachers[i[0].value] = {"TeacherNumber": i[0].value, "Name": i[2].value+" "+i[1].value, "Class": i[3].value, "givenRisk": 0}
+        teachers[i[0].value] = {"TeacherNumber": i[0].value, "Name": i[2].value+" "+i[1].value, "Class": i[3].value, "givenRisk": 0.0}
         #print(teachers[i[0].value])
     return teachers
 
@@ -45,7 +45,7 @@ def TAList():
     j=0
     lastRow = sheet.max_row
     for i in sheet["A2":"F"+str(lastRow)]:
-        tas[j] = {"Name": i[1].value+" "+i[0].value, "Period1": i[2].value, "Period2": i[3].value, "Period3": i[4].value, "Period4": i[5].value, "givenRisk": 0}
+        tas[j] = {"Name": i[1].value+" "+i[0].value, "Period1": i[2].value, "Period2": i[3].value, "Period3": i[4].value, "Period4": i[5].value, "givenRisk": 0.0}
         #print(tas[j])
         j+=1
     return tas
