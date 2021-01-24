@@ -36,19 +36,55 @@ def addEdgeBetweenPeriods(graph, classInfo, tailName, headName, tailPeriod, head
 
 
 def loadGraph():
-    NUM_NODES = 20*4 + 4 #(20 classes * 4 periods + 4 clubs)
+    NUM_NODES = 20*4 + 11 #(20 classes * 4 periods + 11 clubs)
     
     g = graph.Graph(NUM_NODES)
 
-    
+    # Getting class info,  
     classInfo = read.putStudentsInClass()
 
+    # Getting student record
     studentRecord = read.studentRecord
+
+    # Getting Teacher record
+    teacherRecord = read.teachers
+
+    # Getting Teaching Assistant Record
+    TARecord = read.tas
 
     # Adding Edges between periods 1 & 2, and periods 3 & 4
     addEdgeBetweenPeriods(g, classInfo, 'ClassP1', 'ClassP2', 'P1', 'P2', studentRecord)
     addEdgeBetweenPeriods(g, classInfo, 'ClassP3', 'ClassP4', 'P3', 'P4', studentRecord)
     
     g.print_graph()
-    #print(studentRecord[131]["givenRisk"])
+
+    # Printing all the students that have a 100% chance of catching the infection
+    print("Below is listed the students who are certaintly infected (100%)")
+    print("-"*40)
+    for student in studentRecord:
+        if studentRecord[student]["givenRisk"] == 1:
+            print(studentRecord[student]["Name"])
+  
+
+    # Printing all the teachers that have a 100% chance of catching the infection
+    print("\n\n")
+    print("Below is listed the teachers who are certaintly infected (100%)")
+    print("-"*40)
+    for teacher in teacherRecord:
+        if teacherRecord[teacher]["givenRisk"] == 1:
+            print(teacherRecord[teacher]["Name"])
+    
+    print("\n")
+    # Printing all the TAs that have a 100% chance of catching the infection
+    print("Below is listed the TAs who are certaintly infected (100%)")
+    print("-"*40)
+    for TA in TARecord:
+        if TARecord[TA]["givenRisk"] == 1:
+            print(TARecord[TA]["Name"])
+    
+
+
+
 loadGraph()
+
+
