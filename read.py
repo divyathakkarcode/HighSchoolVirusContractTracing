@@ -19,6 +19,7 @@ def infectionList(ListofTeachers, ListofTAs, ListofStudents):
                     tas[index]["givenRisk"] = 1
 
         elif(i[0].value > 20):
+            print("HERE", i[0].value)
             studentRecord[i[0].value]["givenRisk"] = 1
 
         else:
@@ -65,33 +66,58 @@ def putStudentsInClass():
     classesP3 = dict()
     classesP4 = dict()
 
-    studentLst = studentList()
+
+
+    infectionList(teacherList(), TAList(), studentList())
+
+    studentLst = studentRecord 
+    
     for key,value in studentLst.items():
         if value['ClassP1'] in classesP1:
-            classesP1[value['ClassP1']].append(key)
+            classesP1[value['ClassP1']][0].append(key)
         else:
-            classesP1[value['ClassP1']] = [key]
+            classesP1[value['ClassP1']] = [[key]]
 
         if value['ClassP2'] in classesP2:
-            classesP2[value['ClassP2']].append(key)
+            classesP2[value['ClassP2']][0].append(key)
         else:
-            classesP2[value['ClassP2']] = [key]
+            classesP2[value['ClassP2']] = [[key]]
 
         if value['ClassP3'] in classesP3:
-            classesP3[value['ClassP3']].append(key)
+            classesP3[value['ClassP3']][0].append(key)
         else:
-            classesP3[value['ClassP3']] = [key]
+            classesP3[value['ClassP3']] = [[key]]
 
         if value['ClassP4'] in classesP4:
-            classesP4[value['ClassP4']].append(key)
+            classesP4[value['ClassP4']][0].append(key)
         else:
-            classesP4[value['ClassP4']] = [key]
+            classesP4[value['ClassP4']] = [[key]]
+
+
+    teacherLst = teacherList()
+    for key,value in teacherLst.items():
+        classesP1[value['Class']].append( key)
+        classesP2[value['Class']].append( key)
+        classesP3[value['Class']].append( key)
+        classesP4[value['Class']].append( key)
+
+
+    TALst = TAList()
+    for key,value in TALst.items():
+        classesP1[value['Period1']].append( key)
+        classesP2[value['Period2']].append( key)
+        classesP3[value['Period3']].append( key)
+        classesP4[value['Period4']].append( key)
+
+
+
 
     AllClasses = dict()
     AllClasses['ClassP1'] = classesP1
     AllClasses['ClassP2'] = classesP2
     AllClasses['ClassP3'] = classesP3
     AllClasses['ClassP4'] = classesP4
+
     return AllClasses 
 
-print(infectionList(teacherList(), TAList(), studentList()))
+print(putStudentsInClass())  
