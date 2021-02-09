@@ -1,4 +1,6 @@
-# OEC2021-TEAM-JavaScript
+# High School Contract Tracing
+Ontario Engineering Competition 2021 Entry 
+
 ## Team Members
 * Namit Chopra
 * Andrew Balmakund 
