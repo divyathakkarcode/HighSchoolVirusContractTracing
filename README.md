@@ -1,6 +1,11 @@
 # High School Contract Tracing
 Ontario Engineering Competition 2021 Entry 
 
+## About
+- This program was built with the intention of contact tracing a hypothetical virus in a high school
+- The contact tracing algorithm leveraged a weighted directed graph to track possible transitions on the limited data we were given (student and teacher timetables)
+
+
 ## Team Members
 * Namit Chopra
 * Andrew Balmakund 
